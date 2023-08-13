@@ -10,8 +10,6 @@ import {
 import { YoSphere } from "./components/YoSphere";
 import { FunFunSphere } from "./components/FunFunSphere";
 
-//
-
 export function SmartObject() {
   return (
     <>
