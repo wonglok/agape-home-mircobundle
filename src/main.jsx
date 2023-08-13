@@ -48,7 +48,6 @@ export function Preview({ smartObject = null, htmlOverlay = null }) {
     <>
       <Canvas>
         {smartObject}
-
         <OrbitControls></OrbitControls>
         <Environment
           background
