@@ -9,8 +9,6 @@ export function FunFunSphere() {
   let glb = useGLTF(`${baseURL}/geometry/box.glb`);
   glb.scene = glb.scene.clone(true);
 
-  let arr = [];
-
   let geo = false;
   glb.scene.traverse((child) => {
     if (child.geometry && !geo) {
@@ -20,8 +18,6 @@ export function FunFunSphere() {
 
   return (
     <>
-      {arr}
-
       <group
         onClick={() => {
           useSwan.setState({ openOverlay: !useSwan.getState().openOverlay });
