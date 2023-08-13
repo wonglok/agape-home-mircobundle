@@ -40,19 +40,16 @@ http.listen(port, () => {
 
 var chokidar = require("chokidar");
 
-var watcher = chokidar.watch("./dist", {
+var watcher = chokidar.watch("./src", {
   ignored: /^\./,
   persistent: true,
 });
 
 let tt = 0;
 let sendFile = async () => {
-  clearTimeout(tt);
-  tt = setTimeout(() => {
-    sockets.forEach((socket) => {
-      socket.emit("reload", {});
-    });
-  }, 500);
+  sockets.forEach((socket) => {
+    socket.emit("reload", {});
+  });
 };
 
 watcher

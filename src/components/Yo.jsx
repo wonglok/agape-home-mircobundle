@@ -1,4 +1,4 @@
-import { Drei } from "../store/LibraryCache";
+import { Drei } from "../dx/LibraryCache";
 
 let { Sphere, MeshTransmissionMaterial } = Drei;
 

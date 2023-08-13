@@ -1,6 +1,6 @@
 import { DoubleSide } from "three";
 import { useSwan } from "../store/useSwan";
-import { useGLTF, createPortal } from "src/dx/ShortCut";
+import { useGLTF, createPortal } from "../dx/ShortCut";
 
 export function FunFunSphere() {
   let baseURL = useSwan((r) => r.baseURL);
@@ -14,7 +14,7 @@ export function FunFunSphere() {
       arr.push(
         createPortal(
           <meshPhysicalMaterial
-            color="#ffffff"
+            color="#00ffff"
             transmission={1}
             roughness={0}
             metalness={0}
