@@ -1,4 +1,4 @@
-import { Yo } from "./components/Yo";
+import { YoSphere } from "./components/YoSphere";
 import { FunFunSphere } from "./components/FunFunSphere";
 import { useSwan } from "./store/useSwan";
 import {
@@ -14,7 +14,7 @@ export function SmartObject() {
     <>
       <group>
         <group position={[1, 0, 0]}>
-          <Yo></Yo>
+          <YoSphere></YoSphere>
         </group>
         <group position={[-1, 0, 0]}>
           <FunFunSphere></FunFunSphere>

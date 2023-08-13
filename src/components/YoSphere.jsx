@@ -2,7 +2,7 @@ import { Drei } from "../dx/LibraryCache";
 
 let { Sphere, MeshTransmissionMaterial } = Drei;
 
-export function Yo() {
+export function YoSphere() {
   return (
     <>
       <Sphere>
