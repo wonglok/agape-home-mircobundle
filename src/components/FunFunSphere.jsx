@@ -1,29 +1,19 @@
-import { DoubleSide } from "three";
 import { useSwan } from "../store/useSwan";
-import { useGLTF, createPortal } from "../dx/ShortCut";
+import { useGLTF, createPortal, MeshRefractionMaterial } from "../dx/ShortCut";
+import { Drei } from "../dx/LibraryCache";
+let { CubeCamera, useEnvironment, MeshTransmissionMaterial } = Drei;
 
 export function FunFunSphere() {
   let baseURL = useSwan((r) => r.baseURL);
-  let glb = useGLTF(`${baseURL}/geometry/sphere.glb`);
+  let glb = useGLTF(`${baseURL}/geometry/box.glb`);
   glb.scene = glb.scene.clone(true);
 
   let arr = [];
 
+  let geo = false;
   glb.scene.traverse((child) => {
-    if (child.material) {
-      arr.push(
-        createPortal(
-          <meshPhysicalMaterial
-            color="#ffffff"
-            transmission={1}
-            roughness={0}
-            metalness={0}
-            thickness={2}
-            side={DoubleSide}
-          ></meshPhysicalMaterial>,
-          child
-        )
-      );
+    if (child.geometry && !geo) {
+      geo = child.geometry;
     }
   });
 
@@ -36,8 +26,26 @@ export function FunFunSphere() {
           useSwan.setState({ openOverlay: !useSwan.getState().openOverlay });
         }}
       >
-        <primitive object={glb.scene}></primitive>
+        <CubeCamera>
+          {(tt) => {
+            return (
+              <mesh geometry={geo}>
+                <MeshTransmissionMaterial
+                  transmission={1}
+                  envMap={tt}
+                  thickness={1}
+                  backsideThickness={3}
+                  backside={true}
+                  roughness={0.034}
+                  metalness={0}
+                ></MeshTransmissionMaterial>
+              </mesh>
+            );
+          }}
+        </CubeCamera>
       </group>
     </>
   );
 }
+
+//

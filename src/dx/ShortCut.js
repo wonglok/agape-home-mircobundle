@@ -29,3 +29,8 @@ export const OrbitControls = Drei.OrbitControls;
 
 /** @type {import("@react-three/drei").then((r) => r.useGLTF)} */
 export const useGLTF = Drei.useGLTF;
+
+/** @type {import("@react-three/drei").then((r) => r.MeshRefractionMaterial)} */
+export const MeshRefractionMaterial = Drei.MeshRefractionMaterial;
+
+export { Drei, Fiber, React, Zustand };

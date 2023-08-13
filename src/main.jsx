@@ -72,7 +72,6 @@ export function Preview({ smartObject = null, htmlOverlay = null }) {
         {smartObject}
 
         <OrbitControls></OrbitControls>
-
         <Environment
           background
           files={`${baseURL}/hdr/grass.hdr`}
