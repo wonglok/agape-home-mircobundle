@@ -1,15 +1,17 @@
-import { LibraryCache } from "./LibraryCache";
-let Sphere = LibraryCache["@react-three/drei"].Sphere;
+import { Drei } from "./LibraryCache";
+
+let { Sphere, MeshTransmissionMaterial } = Drei;
 
 export function Yo() {
   return (
     <>
       <Sphere>
-        <meshStandardMaterial
-          metalness={1}
-          roughness={0.3}
-          emissive="#000fff"
-        ></meshStandardMaterial>
+        <MeshTransmissionMaterial
+          metalness={0}
+          roughness={0.1}
+          transmission={1}
+          thickness={2}
+        ></MeshTransmissionMaterial>
       </Sphere>
     </>
   );

@@ -1,9 +1,9 @@
 import { DoubleSide } from "three";
-import { LibraryCache } from "./LibraryCache";
+import { Drei, Fiber } from "./LibraryCache";
 import { useSwan } from "./useSwan";
 
-let createPortal = LibraryCache["@react-three/fiber"].createPortal;
-let useGLTF = LibraryCache["@react-three/drei"].useGLTF;
+let createPortal = Fiber.createPortal;
+let useGLTF = Drei.useGLTF;
 
 export function FunFunSphere() {
   let baseURL = useSwan((r) => r.baseURL);

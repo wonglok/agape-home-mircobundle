@@ -1,12 +1,11 @@
-// import {  } from "@react-three/drei";
 import { Yo } from "./Yo";
 import { FunFunSphere } from "./FunFunSphere";
-import { LibraryCache } from "./LibraryCache";
 import { useSwan } from "./useSwan";
+import { Drei, Fiber, React } from "./LibraryCache";
 
-let { useEffect, useState } = LibraryCache["react"];
-let { useGLTF, OrbitControls, Environment } = LibraryCache["@react-three/drei"];
-let { Canvas } = LibraryCache["@react-three/fiber"];
+let { useEffect, useState } = React;
+let { useGLTF, OrbitControls, Environment } = Drei;
+let { Canvas } = Fiber;
 
 export function SmartObject() {
   return (
