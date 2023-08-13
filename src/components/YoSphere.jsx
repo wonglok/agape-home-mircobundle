@@ -18,7 +18,7 @@ export function YoSphere() {
             metalness={0}
             roughness={0.1}
             transmission={1}
-            thickness={1.3}
+            thickness={2.3}
             color={"#ffffff"}
           ></MeshTransmissionMaterial>
         </Text3D>

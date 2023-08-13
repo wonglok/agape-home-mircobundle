@@ -29,11 +29,11 @@ export function FunFunSphere() {
         <mesh geometry={geo}>
           <MeshTransmissionMaterial
             transmission={1}
-            thickness={2}
+            thickness={3}
             roughness={0.13}
             metalness={0}
             reflectivity={0.5}
-            chromaticAberration={0.1}
+            chromaticAberration={0.3}
             color={"#ffffff"}
           ></MeshTransmissionMaterial>
         </mesh>
