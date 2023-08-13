@@ -10,9 +10,9 @@ export function FunFunSphere() {
   glb.scene = glb.scene.clone(true);
 
   let geo = false;
-  glb.scene.traverse((child) => {
-    if (child.geometry && !geo) {
-      geo = child.geometry;
+  glb.scene.traverse((it) => {
+    if (it.geometry && !geo) {
+      geo = it.geometry;
     }
   });
 

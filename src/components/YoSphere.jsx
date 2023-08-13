@@ -13,7 +13,7 @@ export function YoSphere() {
           bevelEnabled={true}
           font={`${baseURL}./fonts/days-font/Days_Regular.json`}
         >
-          Hi
+          {`//`}
           <MeshTransmissionMaterial
             metalness={0}
             roughness={0.1}
