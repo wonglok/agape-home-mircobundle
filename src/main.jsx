@@ -10,6 +10,8 @@ import {
 import { YoSphere } from "./components/YoSphere";
 import { FunFunSphere } from "./components/FunFunSphere";
 
+//
+
 export function SmartObject() {
   return (
     <>
@@ -25,16 +27,18 @@ export function SmartObject() {
   );
 }
 
+//
+
 export function HTMLOverlay() {
   let openOverlay = useSwan((r) => r.openOverlay);
   return (
     <>
       {openOverlay && (
         <div
-          className={`bg-white`}
-          style={{ position: "absolute", top: `0px`, right: `0px` }}
+          className={` backdrop-blur-lg p-5 bg-gray-800 bg-opacity-10 text-white rounded-2xl  border-2 border-gray-800`}
+          style={{ position: "absolute", top: `50%`, right: `50%` }}
         >
-          HTML Overlay 123
+          HTML Overlay
         </div>
       )}
     </>
