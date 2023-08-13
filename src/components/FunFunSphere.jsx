@@ -1,7 +1,8 @@
 import { useSwan } from "../store/useSwan";
-import { useGLTF, createPortal, MeshRefractionMaterial } from "../dx/ShortCut";
+import { useGLTF, createPortal } from "../dx/ShortCut";
 import { Drei } from "../dx/LibraryCache";
-let { CubeCamera, useEnvironment, MeshTransmissionMaterial } = Drei;
+
+let { MeshTransmissionMaterial } = Drei;
 
 export function FunFunSphere() {
   let baseURL = useSwan((r) => r.baseURL);
