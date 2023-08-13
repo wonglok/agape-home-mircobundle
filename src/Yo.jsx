@@ -1,4 +1,5 @@
-let { Sphere } = window.Globals["@react-three/drei"];
+import { LibraryCache } from "./LibraryCache";
+let Sphere = LibraryCache["@react-three/drei"].Sphere;
 
 export function Yo() {
   return (

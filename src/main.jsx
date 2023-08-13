@@ -1,18 +1,12 @@
 // import {  } from "@react-three/drei";
-import { DoubleSide } from "three";
 import { Yo } from "./Yo";
-import { Cache } from "./Cache";
+import { FunFunSphere } from "./FunFunSphere";
+import { LibraryCache } from "./LibraryCache";
+import { useSwan } from "./useSwan";
 
-let { useEffect, useState } = Cache["react"];
-let { useGLTF, OrbitControls, Environment } = Cache["@react-three/drei"];
-let { Canvas, createPortal } = Cache["@react-three/fiber"];
-let { create } = Cache["zustand"];
-
-export const useCtx = create(() => {
-  return {
-    baseURL: "",
-  };
-});
+let { useEffect, useState } = LibraryCache["react"];
+let { useGLTF, OrbitControls, Environment } = LibraryCache["@react-three/drei"];
+let { Canvas } = LibraryCache["@react-three/fiber"];
 
 export function SmartObject() {
   return (
@@ -43,12 +37,14 @@ export function HTMLOverlay() {
 }
 
 export function Preview({ smartObject = null, htmlOverlay = null }) {
-  let baseURL = useCtx((r) => r.baseURL);
+  let baseURL = useSwan((r) => r.baseURL);
   return (
     <>
       <Canvas>
         {smartObject}
+
         <OrbitControls></OrbitControls>
+
         <Environment
           background
           files={`${baseURL}/hdr/grass.hdr`}
@@ -60,45 +56,21 @@ export function Preview({ smartObject = null, htmlOverlay = null }) {
 }
 //
 
-export function Ctx({ children, baseURL, onOK = () => {} }) {
+export function SwanLake({
+  children,
+  baseURL,
+  onAsyncPreload = async () => {},
+  onReady = () => {},
+}) {
   let [ok, setOK] = useState(false);
   useEffect(() => {
-    useCtx.setState({ baseURL: baseURL });
-    onOK();
-    setOK(true);
+    useSwan.setState({ baseURL: baseURL });
+    useGLTF.preload(`${baseURL}/geometry/sphere.glb`);
+    onAsyncPreload().then(() => {
+      onReady();
+      setOK(true);
+    });
   }, [baseURL]);
 
   return ok ? children : null;
-}
-
-function FunFunSphere() {
-  let baseURL = useCtx((r) => r.baseURL);
-  let glb = useGLTF(`${baseURL}/geometry/sphere.glb`);
-  glb.scene = glb.scene.clone(true);
-
-  let arr = [];
-  glb.scene.traverse((child) => {
-    if (child.material) {
-      arr.push(
-        createPortal(
-          <meshPhysicalMaterial
-            color="#ffffff"
-            transmission={1}
-            roughness={0}
-            metalness={0}
-            thickness={2}
-            side={DoubleSide}
-          ></meshPhysicalMaterial>,
-          child
-        )
-      );
-    }
-  });
-
-  return (
-    <>
-      {arr}
-      <primitive object={glb.scene}></primitive>
-    </>
-  );
 }
