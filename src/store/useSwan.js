@@ -1,6 +1,4 @@
-import { LibraryCache } from "./LibraryCache";
-
-let { create } = LibraryCache["zustand"];
+import { create } from "../dx/ShortCut";
 
 export const useSwan = create(() => {
   return {

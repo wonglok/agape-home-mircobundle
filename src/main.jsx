@@ -1,10 +1,13 @@
-import { Yo } from "./Objects/Yo";
-import { FunFunSphere } from "./Objects/FunFunSphere";
+import { Yo } from "./components/Yo";
+import { FunFunSphere } from "./components/FunFunSphere";
 import { useSwan } from "./store/useSwan";
-import { Drei, Fiber, React, useEffect, useState } from "./store/LibraryCache";
-
-let { OrbitControls, Environment } = Drei;
-let { Canvas } = Fiber;
+import {
+  useEffect,
+  useState,
+  Canvas,
+  Environment,
+  OrbitControls,
+} from "./dx/ShortCut";
 
 export function SmartObject() {
   return (
