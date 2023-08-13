@@ -14,9 +14,10 @@
     "watch": "microbundle watch --jsx window.React.createElement --globals three=Joy --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "build2": "microbundle --jsx window.React.createElement --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "watch2": "microbundle watch --jsx window.React.createElement --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
-    "copy": "nodemon --watch public --watch src --exec \"cp -R ./public/. ./dist/\"",
+    "copy": "nodemon --watch public --exec \"cp -rf ./public/. ./dist/\"",
     "code": "nodemon live.cjs --watch src",
-    "dev": "concurrently \"npm run watch\" \"npm run code\" \"npm run copy\""
+    "dev": "concurrently \"npm run watch\" \"npm run code\" \"npm run copy\"",
+    "swan": "npm run build; cp -rf ./public/. ./dist/;"
   },
   "devDependencies": {
     "@react-three/drei": "^9.80.2",

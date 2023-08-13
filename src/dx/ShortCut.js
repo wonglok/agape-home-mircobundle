@@ -21,6 +21,9 @@ export const Canvas = Fiber.Canvas;
 /** @type {import("@react-three/fiber").then((r) => r.createPortal)} */
 export const createPortal = Fiber.createPortal;
 
+/** @type {import("@react-three/fiber").then((r) => r.useFrame)} */
+export const useFrame = Fiber.useFrame;
+
 /** @type {import("@react-three/drei").then((r) => r.Environment)} */
 export const Environment = Drei.Environment;
 
