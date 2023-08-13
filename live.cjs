@@ -38,21 +38,47 @@ http.listen(port, () => {
   console.log(`Socket.IO server running at http://localhost:${port}/`);
 });
 
+let tt = 0;
+let sendFile = async () => {
+  clearTimeout(tt);
+  tt = setTimeout(() => {
+    sockets.forEach((socket) => {
+      socket.emit("reload", {});
+    });
+  }, 50);
+};
+
 var chokidar = require("chokidar");
 
-var watcher = chokidar.watch("./src", {
+var watcherSRC = chokidar.watch("./src", {
   ignored: /^\./,
   persistent: true,
 });
 
-let tt = 0;
-let sendFile = async () => {
-  sockets.forEach((socket) => {
-    socket.emit("reload", {});
+watcherSRC
+  .on("add", function (path) {
+    console.log("File", path, "has been added");
+    sendFile();
+  })
+  .on("change", function (path) {
+    console.log("File", path, "has been changed");
+    sendFile();
+  })
+  .on("unlink", function (path) {
+    console.log("File", path, "has been removed");
+    sendFile();
+  })
+  .on("error", function (error) {
+    console.error("Error happened", error);
+    sendFile();
   });
-};
 
-watcher
+var watcherDist = chokidar.watch("./dist", {
+  ignored: /^\./,
+  persistent: true,
+});
+
+watcherDist
   .on("add", function (path) {
     console.log("File", path, "has been added");
     sendFile();
