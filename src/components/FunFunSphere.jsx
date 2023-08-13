@@ -6,7 +6,7 @@ let { MeshTransmissionMaterial } = Drei;
 
 export function FunFunSphere() {
   let baseURL = useSwan((r) => r.baseURL);
-  let glb = useGLTF(`${baseURL}/geometry/sphere.glb`);
+  let glb = useGLTF(`${baseURL}/geometry/pineapple.glb`);
   glb.scene = glb.scene.clone(true);
 
   let geo = false;
@@ -38,3 +38,5 @@ export function FunFunSphere() {
     </>
   );
 }
+
+//
