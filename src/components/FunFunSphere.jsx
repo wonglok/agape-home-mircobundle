@@ -16,6 +16,7 @@ export function FunFunSphere() {
       geo = it.geometry;
     }
   });
+
   let ball = useRef();
   useFrame((st, dt) => {
     //
