@@ -14,7 +14,7 @@ export function FunFunSphere() {
       arr.push(
         createPortal(
           <meshPhysicalMaterial
-            color="#ff00ff"
+            color="#ffffff"
             transmission={1}
             roughness={0}
             metalness={0}
