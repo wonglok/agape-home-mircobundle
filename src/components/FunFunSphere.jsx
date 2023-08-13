@@ -21,6 +21,9 @@ export function FunFunSphere() {
     //
     ball.current.rotation.x += 1.1 * dt;
     ball.current.rotation.y += 1.1 * dt;
+    ball.current.scale.setScalar(
+      (0.5 + 0.5 * Math.sin(st.clock.elapsedTime * 3.0)) * 2.0
+    );
 
     ball.current.position.z =
       0.5 + 0.5 * Math.sin(st.clock.elapsedTime * 3.0) * 2.5;
@@ -34,15 +37,15 @@ export function FunFunSphere() {
         }}
       >
         <mesh ref={ball} geometry={geo}>
-          <meshPhysicalMaterial
+          <MeshTransmissionMaterial
             transmission={1}
             thickness={0.5}
-            roughness={0.0}
-            metalness={0}
-            reflectivity={0.5}
+            roughness={0.1}
+            metalness={0.05}
+            reflectivity={0.8}
             chromaticAberration={0.3}
             color={"#ffffff"}
-          ></meshPhysicalMaterial>
+          ></MeshTransmissionMaterial>
         </mesh>
       </group>
     </>
