@@ -1,6 +1,6 @@
 import { DoubleSide } from "three";
-import { Drei, Fiber } from "./LibraryCache";
-import { useSwan } from "./useSwan";
+import { Drei, Fiber } from "../store/LibraryCache";
+import { useSwan } from "../store/useSwan";
 
 let createPortal = Fiber.createPortal;
 let useGLTF = Drei.useGLTF;
@@ -11,6 +11,7 @@ export function FunFunSphere() {
   glb.scene = glb.scene.clone(true);
 
   let arr = [];
+
   glb.scene.traverse((child) => {
     if (child.material) {
       arr.push(
@@ -32,7 +33,14 @@ export function FunFunSphere() {
   return (
     <>
       {arr}
-      <primitive object={glb.scene}></primitive>
+
+      <group
+        onClick={() => {
+          useSwan.setState({ openOverlay: !useSwan.getState().openOverlay });
+        }}
+      >
+        <primitive object={glb.scene}></primitive>
+      </group>
     </>
   );
 }
