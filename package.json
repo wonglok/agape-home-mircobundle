@@ -19,25 +19,21 @@
     "dev": "concurrently \"npm run watch\" \"npm run code\" \"npm run copy\""
   },
   "devDependencies": {
-    "microbundle": "^0.15.1"
-  },
-  "peerDependencies": {
-    "@react-three/drei": "^9.80.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "three": "^0.155.0"
-  },
-  "dependencies": {
     "@react-three/drei": "^9.80.2",
     "@react-three/fiber": "^8.13.6",
+    "microbundle": "^0.15.1",
+    "tunnel-rat": "^0.1.2",
+    "three": "^0.155.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "chokidar": "^3.5.3",
     "concurrently": "^8.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "md5": "^2.3.0",
     "nodemon": "^3.0.1",
-    "socket.io": "^4.1.2",
-    "three": "^0.155.0",
-    "tunnel-rat": "^0.1.2"
-  }
+    "socket.io": "^4.1.2"
+  },
+  "peerDependencies": {},
+  "dependencies": {}
 }

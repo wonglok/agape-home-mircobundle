@@ -1,9 +1,6 @@
 import { DoubleSide } from "three";
-import { Drei, Fiber } from "../store/LibraryCache";
 import { useSwan } from "../store/useSwan";
-
-let createPortal = Fiber.createPortal;
-let useGLTF = Drei.useGLTF;
+import { useGLTF, createPortal } from "src/dx/ShortCut";
 
 export function FunFunSphere() {
   let baseURL = useSwan((r) => r.baseURL);
