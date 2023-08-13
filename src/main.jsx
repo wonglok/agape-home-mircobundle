@@ -16,10 +16,10 @@ export function SmartObject() {
   return (
     <>
       <group>
-        <group position={[1, 0, 0]}>
+        <group position={[1.5, 0, 0]}>
           <YoSphere></YoSphere>
         </group>
-        <group position={[-1, 0, 0]}>
+        <group position={[-1.5, 0, 0]}>
           <FunFunSphere></FunFunSphere>
         </group>
       </group>
@@ -27,19 +27,40 @@ export function SmartObject() {
   );
 }
 
-//
-
 export function HTMLOverlay() {
   let openOverlay = useSwan((r) => r.openOverlay);
   return (
     <>
       {openOverlay && (
-        <div
-          className={` backdrop-blur-lg p-5 bg-gray-800 bg-opacity-10 text-white rounded-2xl  border-2 border-gray-800`}
-          style={{ position: "absolute", top: `50%`, right: `50%` }}
-        >
-          HTML Overlay
-        </div>
+        <>
+          <div
+            style={{
+              position: "absolute",
+              top: `0%`,
+              right: `0%`,
+              width: `100%`,
+              height: `100%`,
+            }}
+            onClick={() => {
+              useSwan.setState({ openOverlay: false });
+            }}
+          ></div>
+
+          <div
+            className={` shadow-black shadow-2xl backdrop-blur-lg p-5 bg-gray-800 bg-opacity-10 text-white rounded-2xl`}
+            style={{
+              position: "absolute",
+              top: `25%`,
+              right: `25%`,
+              width: `50%`,
+              height: `50%`,
+              border: "1px solid #888",
+              boxShadow: "0px 0px 30px 0px #888",
+            }}
+          >
+            Hi dear
+          </div>
+        </>
       )}
     </>
   );

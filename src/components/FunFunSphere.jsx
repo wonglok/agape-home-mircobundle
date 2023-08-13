@@ -26,26 +26,18 @@ export function FunFunSphere() {
           useSwan.setState({ openOverlay: !useSwan.getState().openOverlay });
         }}
       >
-        <CubeCamera>
-          {(tt) => {
-            return (
-              <mesh geometry={geo}>
-                <MeshTransmissionMaterial
-                  transmission={1}
-                  envMap={tt}
-                  thickness={1}
-                  backsideThickness={3}
-                  backside={true}
-                  roughness={0.034}
-                  metalness={0}
-                ></MeshTransmissionMaterial>
-              </mesh>
-            );
-          }}
-        </CubeCamera>
+        <mesh geometry={geo}>
+          <MeshTransmissionMaterial
+            transmission={1}
+            thickness={2}
+            roughness={0.13}
+            metalness={0}
+            reflectivity={0.5}
+            chromaticAberration={0.1}
+            color={"#ffffff"}
+          ></MeshTransmissionMaterial>
+        </mesh>
       </group>
     </>
   );
 }
-
-//
