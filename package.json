@@ -10,8 +10,8 @@
   "module": "./dist/main.module.js",
   "unpkg": "./dist/main.umd.js",
   "scripts": {
-    "build": "microbundle --jsx window.React.createElement --jsxFragment window.React.Fragment --external 'none'",
-    "watch": "microbundle watch --jsx window.React.createElement --jsxFragment window.React.Fragment --external 'none'",
+    "build": "microbundle --jsx window.React.createElement --globals three=Joy --jsxFragment window.React.Fragment --external 'none'",
+    "watch": "microbundle watch --jsx window.React.createElement --globals three=Joy --jsxFragment window.React.Fragment --external 'none'",
     "build2": "microbundle --jsx window.React.createElement --jsxFragment window.React.Fragment --external 'none'",
     "watch2": "microbundle watch --jsx window.React.createElement --jsxFragment window.React.Fragment --external 'none'",
     "copy": "nodemon --watch public --watch src --exec \"cp -R ./public/. ./dist/\"",

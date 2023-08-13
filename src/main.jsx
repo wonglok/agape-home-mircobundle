@@ -1,9 +1,15 @@
 import { Yo } from "./Yo";
 import { FunFunSphere } from "./FunFunSphere";
 import { useSwan } from "./useSwan";
-import { Drei, Fiber, React } from "./LibraryCache";
+import {
+  Drei,
+  Fiber,
+  React,
+  useEffect,
+  useCallback,
+  useState,
+} from "./LibraryCache";
 
-let { useEffect, useState } = React;
 let { useGLTF, OrbitControls, Environment } = Drei;
 let { Canvas } = Fiber;
 
@@ -23,10 +29,12 @@ export function SmartObject() {
 }
 
 export function HTMLOverlay() {
+  let cb = useCallback(() => {});
   return (
     <>
       <div
         className={``}
+        onClick={cb}
         style={{ position: "absolute", top: `0px`, right: `0px` }}
       >
         HTML Overlay Yo

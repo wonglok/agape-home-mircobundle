@@ -3,6 +3,18 @@ export const LibraryCache = window.Globals;
 /** @type {import("react")} */
 export const React = LibraryCache["react"];
 
+/** @type {import("react").then((r) => r.useEffect)} */
+export const useEffect = React.useEffect;
+
+/** @type {import("react").then((r) => r.useState)} */
+export const useState = React.useState;
+
+/** @type {import("react").then((r) => r.useMemo)} */
+export const useMemo = React.useMemo;
+
+/** @type {import("react").then((r) => r.useCallback)} */
+export const useCallback = React.useCallback;
+
 /** @type {import("three")} */
 export const THREE = LibraryCache["three"];
 
