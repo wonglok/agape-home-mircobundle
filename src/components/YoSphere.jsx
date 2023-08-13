@@ -11,6 +11,7 @@ export function YoSphere() {
           roughness={0.1}
           transmission={1}
           thickness={2}
+          color={"#00ff00"}
         ></MeshTransmissionMaterial>
       </Sphere>
     </>

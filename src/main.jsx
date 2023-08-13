@@ -31,7 +31,7 @@ export function HTMLOverlay() {
     <>
       {openOverlay && (
         <div
-          className={``}
+          className={`bg-white`}
           style={{ position: "absolute", top: `0px`, right: `0px` }}
         >
           HTML Overlay 123
