@@ -1,5 +1,3 @@
-import { YoSphere } from "./components/YoSphere";
-import { FunFunSphere } from "./components/FunFunSphere";
 import { useSwan } from "./store/useSwan";
 import {
   useEffect,
@@ -8,6 +6,9 @@ import {
   Environment,
   OrbitControls,
 } from "./dx/ShortCut";
+
+import { YoSphere } from "./components/YoSphere";
+import { FunFunSphere } from "./components/FunFunSphere";
 
 export function SmartObject() {
   return (
