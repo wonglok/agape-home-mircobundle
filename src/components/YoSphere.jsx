@@ -39,7 +39,6 @@ export function YoSphere() {
       window.removeEventListener("lenis-scroll", lenisScroll);
     };
   }, []);
-  //
 
   return (
     <>
@@ -64,3 +63,9 @@ export function YoSphere() {
     </>
   );
 }
+
+//
+
+//
+
+//
