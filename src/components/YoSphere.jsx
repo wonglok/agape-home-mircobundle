@@ -15,12 +15,10 @@ export function YoSphere() {
     let lenisScroll = ({ detail }) => {
       // console.log(detail);
       let dt = clock.getDelta();
-
-      //
-
       let current = detail.animatedScroll;
       let total = detail.dimensions.scrollHeight - detail.dimensions.height;
 
+      //
       console.log(current / total);
 
       // console.log(
@@ -48,7 +46,7 @@ export function YoSphere() {
           <Text3D
             scale={2}
             bevelEnabled={true}
-            font={`${baseURL}./fonts/days-font/Days_Regular.json`}
+            font={`${baseURL}/fonts/days-font/Days_Regular.json`}
           >
             {`TJ`}
             <MeshTransmissionMaterial
@@ -56,7 +54,7 @@ export function YoSphere() {
               roughness={0.1}
               transmission={1}
               thickness={2.3}
-              color={"#ffffff"}
+              color={"#ff0000"}
             ></MeshTransmissionMaterial>
           </Text3D>
         </Center>
