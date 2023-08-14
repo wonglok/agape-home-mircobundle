@@ -12,16 +12,34 @@ export function YoSphere() {
 
   useEffect(() => {
     let clock = new Clock();
-    window.addEventListener("lenis-scroll", ({ detail }) => {
+    let lenisScroll = ({ detail }) => {
       // console.log(detail);
       let dt = clock.getDelta();
 
-      // dimensions
+      //
+
+      let current = detail.animatedScroll;
+      let total = detail.dimensions.scrollHeight - detail.dimensions.height;
+
+      console.log(current / total);
+
+      // console.log(
+      //   detail.animatedScroll,
+      //   detail.dimensions.scrollHeight - detail.dimensions.height
+      // );
+      //
+
       if (tjRef.current) {
-        tjRef.current.rotation.y += detail.velocity * dt * 0.5;
+        tjRef.current.rotation.y = (current / total) * Math.PI * 2.0;
       }
-    });
+    };
+
+    window.addEventListener("lenis-scroll", lenisScroll);
+    return () => {
+      window.removeEventListener("lenis-scroll", lenisScroll);
+    };
   }, []);
+  //
 
   return (
     <>
