@@ -13,7 +13,7 @@ export function YoSphere() {
   useEffect(() => {
     let clock = new Clock();
     window.addEventListener("lenis-scroll", ({ detail }) => {
-      console.log(detail);
+      // console.log(detail);
       let dt = clock.getDelta();
 
       if (tjRef.current) {
