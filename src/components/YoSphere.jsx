@@ -27,7 +27,6 @@ export function YoSphere() {
       //   detail.animatedScroll,
       //   detail.dimensions.scrollHeight - detail.dimensions.height
       // );
-      //
 
       if (tjRef.current) {
         tjRef.current.rotation.y = (current / total) * Math.PI * 2.0;
@@ -50,13 +49,13 @@ export function YoSphere() {
             bevelEnabled={true}
             font={`${baseURL}/fonts/days-font/Days_Regular.json`}
           >
-            {`TJ`}
+            {`Yo!`}
             <MeshTransmissionMaterial
               metalness={0}
               roughness={0.1}
               transmission={1}
               thickness={2.3}
-              color={"#00ff00"}
+              color={"#ffffff"}
             ></MeshTransmissionMaterial>
           </Text3D>
         </Center>

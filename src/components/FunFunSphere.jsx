@@ -7,7 +7,7 @@ let { useRef } = React;
 
 export function FunFunSphere() {
   let baseURL = useSwan((r) => r.baseURL);
-  let glb = useGLTF(`${baseURL}/geometry/pineapple.glb`);
+  let glb = useGLTF(`${baseURL}/geometry/box.glb`);
   glb.scene = glb.scene.clone(true);
 
   let geo = false;
@@ -19,7 +19,6 @@ export function FunFunSphere() {
 
   let ball = useRef();
   useFrame((st, dt) => {
-    ball.current.rotation.x += 1.1 * dt;
     ball.current.rotation.y += 1.1 * dt;
     ball.current.scale.setScalar(
       1.0 + 0.25 * Math.sin(st.clock.elapsedTime * 3.0)
