@@ -16,6 +16,7 @@ export function YoSphere() {
       // console.log(detail);
       let dt = clock.getDelta();
 
+      // dimensions
       if (tjRef.current) {
         tjRef.current.rotation.y += detail.velocity * dt * 0.5;
       }
