@@ -18,6 +18,8 @@ export function YoSphere() {
       let current = detail.animatedScroll;
       let total = detail.dimensions.scrollHeight - detail.dimensions.height;
 
+      let pageHeight = detail.dimensions.height;
+
       //
       console.log(current / total);
 
@@ -54,7 +56,7 @@ export function YoSphere() {
               roughness={0.1}
               transmission={1}
               thickness={2.3}
-              color={"#ff0000"}
+              color={"#00ff00"}
             ></MeshTransmissionMaterial>
           </Text3D>
         </Center>
