@@ -17,6 +17,7 @@ const port = process.env.PORT || 8521;
 
 app.use(cors({ methods: "OPTIONS" }));
 
+app.use("/", staticFiles("public"));
 app.use("/", staticFiles("dist"));
 app.use("/my-swans", staticFiles("my-swans"));
 

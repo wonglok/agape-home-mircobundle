@@ -9,6 +9,9 @@ export const useState = React.useState;
 /** @type {import("react").then((r) => r.useMemo)} */
 export const useMemo = React.useMemo;
 
+/** @type {import("react").then((r) => r.useRef)} */
+export const useRef = React.useRef;
+
 /** @type {import("react").then((r) => r.useCallback)} */
 export const useCallback = React.useCallback;
 
