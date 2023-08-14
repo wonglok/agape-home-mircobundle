@@ -7,6 +7,7 @@ let { Sphere, MeshTransmissionMaterial, Text3D, Center } = Drei;
 
 export function YoSphere() {
   let baseURL = useSwan((r) => r.baseURL);
+  let text = useSwan((r) => r.text);
 
   let tjRef = useRef();
 
@@ -49,13 +50,13 @@ export function YoSphere() {
             bevelEnabled={true}
             font={`${baseURL}/fonts/days-font/Days_Regular.json`}
           >
-            {`Yo!`}
+            {`${text}`}
             <MeshTransmissionMaterial
               metalness={0}
               roughness={0.1}
               transmission={1}
               thickness={2.3}
-              color={"#ffffff"}
+              color={"#0000ff"}
             ></MeshTransmissionMaterial>
           </Text3D>
         </Center>

@@ -4,5 +4,6 @@ export const useSwan = create(() => {
   return {
     openOverlay: false,
     baseURL: "",
+    text: "CJ",
   };
 });

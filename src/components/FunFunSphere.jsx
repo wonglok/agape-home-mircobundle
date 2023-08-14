@@ -40,7 +40,7 @@ export function FunFunSphere() {
             metalness={0.05}
             reflectivity={0.8}
             chromaticAberration={0.3}
-            color={"#00ff00"}
+            color={"#ffffff"}
           ></MeshTransmissionMaterial>
         </mesh>
       </group>
