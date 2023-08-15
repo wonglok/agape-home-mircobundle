@@ -1,11 +1,5 @@
 import { useSwan } from "../store/useSwan";
-import {
-  useEffect,
-  useState,
-  Canvas,
-  Environment,
-  OrbitControls,
-} from "../dx/ShortCut";
+import { useEffect, useState } from "../dx/ShortCut";
 import { YoSphere } from "../components/YoSphere";
 import { FunFunSphere } from "../components/FunFunSphere";
 
