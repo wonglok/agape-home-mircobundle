@@ -12,19 +12,15 @@ import { FunFunSphere } from "../components/FunFunSphere";
 export function SwanPreload({
   children,
   baseURL,
-  onAsyncPreload = async () => {},
   preloader = null,
   onReady = () => {},
 }) {
   let [ok, setOK] = useState(false);
   useEffect(() => {
     baseURL[baseURL.length - 1] === "/" ? baseURL.slice(0, -1) : baseURL;
-
     useSwan.setState({ baseURL: baseURL });
-    onAsyncPreload().then(() => {
-      onReady();
-      setOK(true);
-    });
+    onReady();
+    setOK(true);
   }, [baseURL]);
 
   return ok ? children : preloader;
@@ -97,41 +93,37 @@ export function HTMLOverlay() {
   );
 }
 
-export function Preview({ smartObject = null, htmlOverlay = null }) {
-  let baseURL = useSwan((r) => r.baseURL);
-  return (
-    <>
-      <Canvas>
-        {smartObject}
-        <OrbitControls></OrbitControls>
-        <Environment
-          background
-          files={`${baseURL}/hdr/grass.hdr`}
-        ></Environment>
-      </Canvas>
-      {htmlOverlay}
-    </>
-  );
-}
+// export function Preview({ smartObject = null, htmlOverlay = null }) {
+//   let baseURL = useSwan((r) => r.baseURL);
+//   return (
+//     <>
+//       <Canvas>
+//         {smartObject}
+//         <OrbitControls></OrbitControls>
+//         <Environment
+//           background
+//           files={`${baseURL}/hdr/grass.hdr`}
+//         ></Environment>
+//       </Canvas>
+//       {htmlOverlay}
+//     </>
+//   );
+// }
 
-export function SwanPage({ smartObject = null, htmlOverlay = null }) {
-  let baseURL = useSwan((r) => r.baseURL);
-  return (
-    <>
-      <Canvas>
-        {smartObject}
+// export function SmartPage({ smartObject = null, htmlOverlay = null }) {
+//   let baseURL = useSwan((r) => r.baseURL);
+//   return (
+//     <>
+//       <Canvas>
+//         {smartObject}
 
-        <OrbitControls></OrbitControls>
-        <Environment
-          background
-          files={`${baseURL}/hdr/grass.hdr`}
-        ></Environment>
-      </Canvas>
-      {htmlOverlay}
-    </>
-  );
-}
-
-//
-
-//
+//         <OrbitControls></OrbitControls>
+//         <Environment
+//           background
+//           files={`${baseURL}/hdr/grass.hdr`}
+//         ></Environment>
+//       </Canvas>
+//       {htmlOverlay}
+//     </>
+//   );
+// }
