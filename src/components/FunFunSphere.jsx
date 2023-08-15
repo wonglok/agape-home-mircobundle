@@ -35,12 +35,14 @@ export function FunFunSphere() {
         <mesh ref={ball} geometry={geo}>
           <MeshTransmissionMaterial
             transmission={1}
-            thickness={0.5}
-            roughness={0.1}
-            metalness={0.05}
-            reflectivity={0.8}
-            chromaticAberration={0.3}
+            thickness={1.0}
+            roughness={0.3}
             color={"#ffffff"}
+            metalness={0.0}
+            reflectivity={0.5}
+            chromaticAberration={0.0}
+            transmissionSampler
+            temporalDistortion={0.5}
           ></MeshTransmissionMaterial>
         </mesh>
       </group>
