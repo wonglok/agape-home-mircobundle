@@ -19,6 +19,9 @@ export function SwanPreload({
   useEffect(() => {
     baseURL[baseURL.length - 1] === "/" ? baseURL.slice(0, -1) : baseURL;
     useSwan.setState({ baseURL: baseURL });
+
+    //
+
     onReady();
     setOK(true);
   }, [baseURL]);
