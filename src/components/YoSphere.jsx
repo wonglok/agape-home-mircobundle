@@ -24,7 +24,6 @@ export function YoSphere() {
       //
       console.log(current / total);
 
-      //
       // console.log(
       //   detail.animatedScroll,
       //   detail.dimensions.scrollHeight - detail.dimensions.height
@@ -46,7 +45,7 @@ export function YoSphere() {
       <group ref={tjRef}>
         <Center>
           <Text3D
-            height={0.05}
+            height={0.0125}
             bevelSize={0.025}
             bevelSegments={5}
             bevelThickness={0.1}
@@ -61,6 +60,8 @@ export function YoSphere() {
               transmission={1}
               thickness={2.3}
               color={"#ffffff"}
+              // attenuationDistance={0.5}
+              // attenuationColor={"#00ffff"}
             ></MeshTransmissionMaterial>
           </Text3D>
         </Center>
