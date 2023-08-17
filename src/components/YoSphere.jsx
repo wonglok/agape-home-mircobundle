@@ -3,7 +3,7 @@ import { Drei } from "../dx/LibraryCache";
 import { useRef, useEffect } from "../dx/ShortCut";
 import { Clock } from "three";
 
-let { Sphere, MeshTransmissionMaterial, Text3D, Center } = Drei;
+let { MeshTransmissionMaterial, Text3D, Center } = Drei;
 
 export function YoSphere() {
   let baseURL = useSwan((r) => r.baseURL);
@@ -24,6 +24,7 @@ export function YoSphere() {
       //
       console.log(current / total);
 
+      //
       // console.log(
       //   detail.animatedScroll,
       //   detail.dimensions.scrollHeight - detail.dimensions.height
@@ -45,7 +46,11 @@ export function YoSphere() {
       <group ref={tjRef}>
         <Center>
           <Text3D
-            scale={2}
+            height={0.05}
+            bevelSize={0.025}
+            bevelSegments={5}
+            bevelThickness={0.1}
+            scale={1.5}
             bevelEnabled={true}
             font={`${baseURL}/fonts/days-font/Days_Regular.json`}
           >
@@ -55,7 +60,7 @@ export function YoSphere() {
               roughness={0.1}
               transmission={1}
               thickness={2.3}
-              color={"#ff00ff"}
+              color={"#ffffff"}
             ></MeshTransmissionMaterial>
           </Text3D>
         </Center>
@@ -63,6 +68,8 @@ export function YoSphere() {
     </>
   );
 }
+
+//
 
 //
 

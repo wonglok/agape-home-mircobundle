@@ -14,10 +14,12 @@ export function SwanPreload({
     baseURL[baseURL.length - 1] === "/" ? baseURL.slice(0, -1) : baseURL;
     useSwan.setState({ baseURL: baseURL });
 
-    //
-
-    onReady();
-    setOK(true);
+    new Promise((resolve) => {
+      resolve();
+    }).then(() => {
+      onReady();
+      setOK(true);
+    });
   }, [baseURL]);
 
   return ok ? children : preloader;
@@ -89,38 +91,3 @@ export function HTMLOverlay() {
     </>
   );
 }
-
-// export function Preview({ smartObject = null, htmlOverlay = null }) {
-//   let baseURL = useSwan((r) => r.baseURL);
-//   return (
-//     <>
-//       <Canvas>
-//         {smartObject}
-//         <OrbitControls></OrbitControls>
-//         <Environment
-//           background
-//           files={`${baseURL}/hdr/grass.hdr`}
-//         ></Environment>
-//       </Canvas>
-//       {htmlOverlay}
-//     </>
-//   );
-// }
-
-// export function SmartPage({ smartObject = null, htmlOverlay = null }) {
-//   let baseURL = useSwan((r) => r.baseURL);
-//   return (
-//     <>
-//       <Canvas>
-//         {smartObject}
-
-//         <OrbitControls></OrbitControls>
-//         <Environment
-//           background
-//           files={`${baseURL}/hdr/grass.hdr`}
-//         ></Environment>
-//       </Canvas>
-//       {htmlOverlay}
-//     </>
-//   );
-// }
