@@ -3,7 +3,7 @@ import { useEffect, useState } from "../dx/ShortCut";
 import { YoSphere } from "../components/YoSphere";
 import { FunFunSphere } from "../components/FunFunSphere";
 
-export function SwanPreload({
+export function Runtime({
   children,
   baseURL,
   preloader = null,
