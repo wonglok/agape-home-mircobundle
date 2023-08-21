@@ -10,9 +10,7 @@
     "declaration": false,
     "allowJs": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "paths": {}
   },
   "exclude": ["**/*/node_modules"],
   "include": ["**/*"]

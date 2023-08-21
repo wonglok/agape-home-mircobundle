@@ -1,29 +1,10 @@
 import { useSwan } from "../store/useSwan";
-import { useEffect, useState } from "../dx/ShortCut";
+
 import { YoSphere } from "../components/YoSphere";
 import { FunFunSphere } from "../components/FunFunSphere";
+import { Runtime } from "../store/Runtime";
 
-export function Runtime({
-  children,
-  baseURL,
-  preloader = null,
-  onReady = () => {},
-}) {
-  let [ok, setOK] = useState(false);
-  useEffect(() => {
-    baseURL[baseURL.length - 1] === "/" ? baseURL.slice(0, -1) : baseURL;
-    useSwan.setState({ baseURL: baseURL });
-
-    new Promise((resolve) => {
-      resolve();
-    }).then(() => {
-      onReady();
-      setOK(true);
-    });
-  }, [baseURL]);
-
-  return ok ? children : preloader;
-}
+export { Runtime };
 
 export function SmartObject() {
   //
