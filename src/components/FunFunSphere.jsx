@@ -19,7 +19,10 @@ export function FunFunSphere() {
 
   let ball = useRef();
   useFrame((st, dt) => {
+    //
     ball.current.rotation.y += 1.1 * dt;
+
+    //
     ball.current.scale.setScalar(
       1.0 + 0.25 * Math.sin(st.clock.elapsedTime * 3.0)
     );
@@ -38,6 +41,8 @@ export function FunFunSphere() {
             thickness={1.0}
             roughness={0.3}
             color={"#ffffff"}
+            attenuationDistance={5}
+            attenuationColor={"#00ffff"}
             metalness={0.0}
             reflectivity={0.5}
             chromaticAberration={0.0}
@@ -49,8 +54,6 @@ export function FunFunSphere() {
     </>
   );
 }
-
-//
 
 //
 

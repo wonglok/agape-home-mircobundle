@@ -54,13 +54,17 @@ export function YoSphere() {
           >
             {`${text}`}
             <MeshTransmissionMaterial
-              metalness={0}
-              roughness={0.1}
               transmission={1}
-              thickness={2.3}
+              thickness={1.0}
+              roughness={0.3}
               color={"#ffffff"}
-              // attenuationDistance={0.5}
-              // attenuationColor={"#00ffff"}
+              attenuationDistance={5}
+              attenuationColor={"#ffff00"}
+              metalness={0.0}
+              reflectivity={0.5}
+              chromaticAberration={0.0}
+              transmissionSampler
+              temporalDistortion={0.5}
             ></MeshTransmissionMaterial>
           </Text3D>
         </Center>
