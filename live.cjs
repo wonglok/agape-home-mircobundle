@@ -57,10 +57,10 @@ var watcherSRC = chokidar.watch("./src", {
   persistent: true,
 });
 
-let needsUpdate = false;
+let needsRefresh = false;
 setInterval(() => {
-  if (needsUpdate) {
-    needsUpdate = false;
+  if (needsRefresh) {
+    needsRefresh = false;
     sendFile();
   }
 }, 100);
@@ -68,19 +68,19 @@ setInterval(() => {
 watcherSRC
   .on("add", function (path) {
     console.log("File", path, "has been added");
-    needsUpdate = true;
+    needsRefresh = true;
   })
   .on("change", function (path) {
     console.log("File", path, "has been changed");
-    needsUpdate = true;
+    needsRefresh = true;
   })
   .on("unlink", function (path) {
     console.log("File", path, "has been removed");
-    needsUpdate = true;
+    needsRefresh = true;
   })
   .on("error", function (error) {
     console.error("Error happened", error);
-    needsUpdate = true;
+    needsRefresh = true;
   });
 
 var watcherDist = chokidar.watch("./dist", {
@@ -91,17 +91,17 @@ var watcherDist = chokidar.watch("./dist", {
 watcherDist
   .on("add", function (path) {
     console.log("File", path, "has been added");
-    needsUpdate = true;
+    needsRefresh = true;
   })
   .on("change", function (path) {
     console.log("File", path, "has been changed");
-    needsUpdate = true;
+    needsRefresh = true;
   })
   .on("unlink", function (path) {
     console.log("File", path, "has been removed");
-    needsUpdate = true;
+    needsRefresh = true;
   })
   .on("error", function (error) {
     console.error("Error happened", error);
-    needsUpdate = true;
+    needsRefresh = true;
   });
