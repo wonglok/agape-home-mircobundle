@@ -1,7 +1,7 @@
 import cors from "cors";
 import express from "express";
 import { static as staticFiles } from "express";
-import { autosave } from "./db.mjs";
+// import { autosave } from "./db.mjs";
 import * as Http from "http";
 import * as socket from "socket.io";
 import * as chokidar from "chokidar";
@@ -36,19 +36,19 @@ io.on("connection", (socket) => {
     sockets = sockets.filter((s) => s.id !== socket.id);
   });
 
-  socket.on("readSwanCloud", async (data, res) => {
-    await autosave(async ({ db }) => {
-      console.log(db.data);
-    });
-  });
+  // socket.on("readSwanCloud", async (data, res) => {
+  //   await autosave(async ({ db }) => {
+  //     console.log(db.data);
+  //   });
+  // });
 
   sendFile();
 });
 
-autosave(async ({ db }) => {
-  console.log("booting up db");
-  console.log(db.data);
-});
+// autosave(async ({ db }) => {
+//   console.log("booting up db");
+//   console.log(db.data);
+// });
 
 http.listen(port, () => {
   console.log(`Socket.IO server running at http://localhost:${port}/`);
