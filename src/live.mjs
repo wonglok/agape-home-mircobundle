@@ -1,25 +1,26 @@
-const cors = require("cors");
-const { default: express, static: staticFiles } = require("express");
-
-const app = require("express")();
-const http = require("http").Server(app);
-// const fs = require("fs");
-// const path = require("path");
-// const md5 = require("md5");
-const io = require("socket.io")(http, {
+import cors from "cors";
+import express from "express";
+import { static as staticFiles } from "express";
+import { work } from "./db.mjs";
+import * as Http from "http";
+import * as socket from "socket.io";
+import * as chokidar from "chokidar";
+let app = express();
+let http = Http.Server(app);
+let io = new socket.Server(http, {
   cors: {
     credentials: true,
     origin: "*",
     methods: ["GET", "POST", "OPTIONS"],
   },
 });
+
 const port = process.env.PORT || 8521;
 
 app.use(cors({ methods: "OPTIONS" }));
 
 app.use("/", staticFiles("public"));
 app.use("/", staticFiles("dist"));
-app.use("/my-swans", staticFiles("my-swans"));
 
 let sockets = [];
 io.on("connection", (socket) => {
@@ -33,7 +34,19 @@ io.on("connection", (socket) => {
     console.log("a user disconnected", socket.id);
     sockets = sockets.filter((s) => s.id !== socket.id);
   });
+
+  socket.on("readSwanCloud", (data, res) => {
+    //
+    work(async ({ db }) => {
+      console.log(db.data);
+    });
+  });
+
   sendFile();
+});
+
+work(async ({ db }) => {
+  console.log(db.data);
 });
 
 http.listen(port, () => {
@@ -50,8 +63,6 @@ let sendFile = async () => {
   }, 50);
 };
 
-var chokidar = require("chokidar");
-
 var watcherSRC = chokidar.watch("./src", {
   ignored: /^\./,
   persistent: true,
@@ -67,19 +78,19 @@ setInterval(() => {
 
 watcherSRC
   .on("add", function (path) {
-    console.log("File", path, "has been added");
+    // console.log("File", path, "has been added");
     needsRefresh = true;
   })
   .on("change", function (path) {
-    console.log("File", path, "has been changed");
+    // console.log("File", path, "has been changed");
     needsRefresh = true;
   })
   .on("unlink", function (path) {
-    console.log("File", path, "has been removed");
+    // console.log("File", path, "has been removed");
     needsRefresh = true;
   })
   .on("error", function (error) {
-    console.error("Error happened", error);
+    // console.error("Error happened", error);
     needsRefresh = true;
   });
 
@@ -90,18 +101,18 @@ var watcherDist = chokidar.watch("./dist", {
 
 watcherDist
   .on("add", function (path) {
-    console.log("File", path, "has been added");
+    // console.log("File", path, "has been added");
     needsRefresh = true;
   })
   .on("change", function (path) {
-    console.log("File", path, "has been changed");
+    // console.log("File", path, "has been changed");
     needsRefresh = true;
   })
   .on("unlink", function (path) {
-    console.log("File", path, "has been removed");
+    // console.log("File", path, "has been removed");
     needsRefresh = true;
   })
   .on("error", function (error) {
-    console.error("Error happened", error);
+    // console.error("Error happened", error);
     needsRefresh = true;
   });

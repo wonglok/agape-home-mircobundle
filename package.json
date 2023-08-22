@@ -3,37 +3,40 @@
   "type": "module",
   "source": "src/entry/*",
   "exports": {
-    "require": "./dist/main.cjs",
-    "default": "./dist/main.modern.js"
+    "require": "./dist/frontend/main.cjs",
+    "default": "./dist/frontend/main.modern.js"
   },
-  "main": "./dist/main.cjs",
-  "module": "./dist/main.module.js",
-  "unpkg": "./dist/main.umd.js",
+  "main": "./dist/frontend/main.cjs",
+  "module": "./dist/frontend/main.module.js",
+  "unpkg": "./dist/frontend/main.umd.js",
   "scripts": {
     "buildCode": "microbundle --jsx window.React.createElement --tsconfig tsconfig.json --globals three=window.Joy --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "watch": "microbundle watch --jsx window.React.createElement --tsconfig tsconfig.json --globals three=window.Joy --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "build2": "microbundle --jsx window.React.createElement --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "watch2": "microbundle watch --jsx window.React.createElement --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
-    "copy": "nodemon --watch public --exec \"cp -rf ./public/. ./dist/\"",
-    "code": "nodemon live.cjs --watch src",
+    "copy": "nodemon --watch public --exec \"cp -rf ./public/. ./dist/frontend/.\"",
+    "code": "nodemon ./src/live.mjs --watch src",
     "dev": "concurrently \"npm run watch\" \"npm run code\" \"npm run copy\"",
-    "build": "npm run buildCode; cp -rf ./public/. ./dist/;"
+    "zip": "bestzip ./out/swan-bundle.zip -r ./dist/frontend/* ./dist/cloud/*",
+    "build": "rm -fr ./dist; npm run buildCode; cp -rf ./public/. ./dist/frontend/; cp -rf ./src-cloud/. ./dist/cloud; npm run zip;"
   },
   "devDependencies": {
     "@react-three/drei": "^9.80.2",
     "@react-three/fiber": "^8.13.6",
-    "microbundle": "^0.15.1",
-    "tunnel-rat": "^0.1.2",
-    "three": "^0.155.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "chokidar": "^3.5.3",
     "concurrently": "^8.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "md5": "^2.3.0",
+    "microbundle": "^0.15.1",
     "nodemon": "^3.0.1",
-    "socket.io": "^4.1.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "socket.io": "^4.1.2",
+    "three": "^0.155.0",
+    "tunnel-rat": "^0.1.2",
+    "bestzip": "^2.2.1",
+    "lowdb": "^6.0.1"
   },
   "peerDependencies": {},
   "dependencies": {}
