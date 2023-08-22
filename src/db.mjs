@@ -14,6 +14,26 @@ const adapter = new JSONFile(fileURL);
 const defaultData = { endpoints: [], schemas: [] };
 const db = new Low(adapter, defaultData);
 
+let lock = false;
+let internal = async (fnc) => {
+  lock = true;
+  await db.read();
+  await fnc({ db, data: db.data });
+  await db.write();
+  lock = false;
+};
+
+let autosave = async (fnc) => {
+  let tt = setInterval(() => {
+    if (!lock) {
+      clearInterval(tt);
+      internal(fnc);
+    }
+  }, 0);
+};
+
+export { db, autosave };
+
 // // Read data from JSON file, this will set db.data content
 // // If JSON file doesn't exist, defaultData is used instead
 // await db.read();
@@ -28,23 +48,3 @@ const db = new Low(adapter, defaultData);
 
 // // Finally write db.data content to file
 // await db.write();
-
-let lock = false;
-let internal = async (fnc) => {
-  lock = true;
-  await db.read();
-  await fnc({ db });
-  await db.write();
-  lock = false;
-};
-
-let work = async (fnc) => {
-  let tt = setInterval(() => {
-    if (!lock) {
-      clearInterval(tt);
-      internal(fnc);
-    }
-  }, 0);
-};
-
-export { db, work };

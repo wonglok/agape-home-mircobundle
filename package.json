@@ -15,7 +15,7 @@
     "build2": "microbundle --jsx window.React.createElement --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "watch2": "microbundle watch --jsx window.React.createElement --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "copy": "nodemon --watch public --exec \"cp -rf ./public/. ./dist/frontend/.\"",
-    "code": "nodemon ./src/live.mjs --watch src",
+    "code": "nodemon ./src/live-dev.mjs --watch src",
     "dev": "concurrently \"npm run watch\" \"npm run code\" \"npm run copy\"",
     "zip": "bestzip ./out/swan-bundle.zip -r ./dist/frontend/* ./dist/cloud/*",
     "build": "rm -fr ./dist; npm run buildCode; cp -rf ./public/. ./dist/frontend/; cp -rf ./src-cloud/. ./dist/cloud; npm run zip;"
