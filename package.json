@@ -18,15 +18,18 @@
     "code": "nodemon ./src/live-dev.mjs --watch src",
     "dev": "concurrently \"npm run watch\" \"npm run code\" \"npm run copy\"",
     "zip": "bestzip ./out/swan-bundle.zip -r ./dist/frontend/* ./dist/cloud/*",
-    "build": "rm -fr ./dist; npm run buildCode; cp -rf ./public/. ./dist/frontend/; cp -rf ./src-cloud/. ./dist/cloud; npm run zip;"
+    "build": "rm -fr ./dist; npm run buildCode; cp -rf ./public/. ./dist/frontend/; cp -rf ./src-cloud/. ./dist/cloud; npm run zip;",
+    "deploy": "npm run build; vercel --prod"
   },
   "devDependencies": {
     "@react-three/drei": "^9.80.2",
     "@react-three/fiber": "^8.13.6",
+    "bestzip": "^2.2.1",
     "chokidar": "^3.5.3",
     "concurrently": "^8.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "lowdb": "^6.0.1",
     "md5": "^2.3.0",
     "microbundle": "^0.15.1",
     "nodemon": "^3.0.1",
@@ -35,8 +38,7 @@
     "socket.io": "^4.1.2",
     "three": "^0.155.0",
     "tunnel-rat": "^0.1.2",
-    "bestzip": "^2.2.1",
-    "lowdb": "^6.0.1"
+    "vercel": "^32.0.1"
   },
   "peerDependencies": {},
   "dependencies": {}

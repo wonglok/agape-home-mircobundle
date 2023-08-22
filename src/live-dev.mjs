@@ -27,6 +27,7 @@ io.on("connection", (socket) => {
   sockets.push(socket);
 
   console.log("a user connected", socket.id);
+
   socket.on("request", () => {
     sendFile();
   });
@@ -39,8 +40,6 @@ io.on("connection", (socket) => {
     await autosave(async ({ db }) => {
       console.log(db.data);
     });
-
-    //
   });
 
   sendFile();
