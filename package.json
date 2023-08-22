@@ -3,28 +3,26 @@
   "type": "module",
   "source": "src/entry/*",
   "exports": {
-    "require": "./dist/frontend/main.cjs",
-    "default": "./dist/frontend/main.modern.js"
+    "require": "./dist/main.cjs",
+    "default": "./dist/main.modern.js"
   },
-  "main": "./dist/frontend/main.cjs",
-  "module": "./dist/frontend/main.module.js",
-  "unpkg": "./dist/frontend/main.umd.js",
+  "main": "./dist/main.cjs",
+  "module": "./dist/main.module.js",
+  "unpkg": "./dist/main.umd.js",
   "scripts": {
     "buildCode": "microbundle --jsx window.React.createElement --tsconfig tsconfig.json --globals three=window.Joy --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "watch": "microbundle watch --jsx window.React.createElement --tsconfig tsconfig.json --globals three=window.Joy --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "build2": "microbundle --jsx window.React.createElement --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "watch2": "microbundle watch --jsx window.React.createElement --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
-    "copy": "nodemon --watch public --exec \"cp -rf ./public/. ./dist/frontend/.\"",
+    "copy": "nodemon --watch public --exec \"cp -rf ./public/. ./dist/.\"",
     "code": "nodemon ./src/live-dev.mjs --watch src",
     "dev": "concurrently \"npm run watch\" \"npm run code\" \"npm run copy\"",
-    "zip": "bestzip ./out/swan-bundle.zip -r ./dist/frontend/* ./dist/cloud/*",
-    "build": "rm -fr ./dist; npm run buildCode; cp -rf ./public/. ./dist/frontend/; cp -rf ./src-cloud/. ./dist/cloud; npm run zip;",
+    "build": "rm -fr ./dist; npm run buildCode; cp -rf ./public/. ./dist/;",
     "deploy": "npm run build; vercel --prod"
   },
   "devDependencies": {
     "@react-three/drei": "^9.80.2",
     "@react-three/fiber": "^8.13.6",
-    "bestzip": "^2.2.1",
     "chokidar": "^3.5.3",
     "concurrently": "^8.2.0",
     "cors": "^2.8.5",
