@@ -1,7 +1,6 @@
 import cors from "cors";
 import express from "express";
 import { static as staticFiles } from "express";
-// import { autosave } from "./db.mjs";
 import * as Http from "http";
 import * as socket from "socket.io";
 import * as chokidar from "chokidar";
