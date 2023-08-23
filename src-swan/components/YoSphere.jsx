@@ -1,8 +1,9 @@
 import { useSwan } from "../store/useSwan";
 import { Drei } from "../dx/LibraryCache";
 import { useRef, useEffect } from "../dx/ShortCut";
-import { Clock } from "three";
+import { THREE } from "../dx/LibraryCache";
 
+let { Clock } = THREE;
 let { MeshTransmissionMaterial, Text3D, Center } = Drei;
 
 export function YoSphere() {

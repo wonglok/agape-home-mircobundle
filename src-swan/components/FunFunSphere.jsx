@@ -1,9 +1,9 @@
 import { useSwan } from "../store/useSwan";
 import { useGLTF, createPortal, useFrame } from "../dx/ShortCut";
 import { Drei, React, Fiber } from "../dx/LibraryCache";
-import { Center } from "@react-three/drei";
+// import { Center } from "@react-three/drei";
 
-let { MeshTransmissionMaterial } = Drei;
+let { MeshTransmissionMaterial, Center } = Drei;
 let { useRef } = React;
 
 export function FunFunSphere() {
