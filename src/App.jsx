@@ -5,13 +5,16 @@ import { Canvas } from "@react-three/fiber";
 import { SwanRuntime } from "./Swan/SwanRuntime";
 import { Environment, OrbitControls } from "@react-three/drei";
 
+let developmentURL = "http://localhost:8521";
+let productionURL = `https://swan-runtime.vercel.app`;
 function App() {
   return (
     <>
       <Canvas>
         <SwanRuntime
           mode={"development"}
-          developmentURL={"http://localhost:8521"}
+          developmentURL={developmentURL}
+          productionURL={productionURL}
         ></SwanRuntime>
 
         <Environment

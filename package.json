@@ -9,20 +9,29 @@
   "main": "./dist/main.cjs",
   "module": "./dist/main.module.js",
   "unpkg": "./dist/main.umd.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "dev": "concurrently \"npm run watch\" \"npm run code\" \"npm run copy\" \"npm run vite-dev\"",
     "buildCode": "microbundle --jsx window.React.createElement --tsconfig tsconfig.json --globals three=window.Joy --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "watch": "microbundle watch --jsx window.React.createElement --tsconfig tsconfig.json --globals three=window.Joy --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "build2": "microbundle --jsx window.React.createElement --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "watch2": "microbundle watch --jsx window.React.createElement --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "copy": "nodemon --watch public --exec \"cp -rf ./public/. ./dist/.\"",
     "code": "nodemon ./src-frontend/live-dev.mjs --watch src-frontend",
-    "dev": "concurrently \"npm run watch\" \"npm run code\" \"npm run copy\"",
     "build": "rm -fr ./dist; npm run buildCode; cp -rf ./public/. ./dist/;",
-    "deploy": "npm run build; vercel --prod"
+    "deploy": "npm run build; vercel --prod",
+    "vite-dev": "vite",
+    "vite-build": "vite build",
+    "vite-lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "vite-preview": "vite preview"
   },
   "devDependencies": {
     "@react-three/drei": "^9.80.2",
     "@react-three/fiber": "^8.13.6",
+    "@react-three/postprocessing": "^2.15.0",
+    "@react-three/xr": "^5.6.2",
     "chokidar": "^3.5.3",
     "concurrently": "^8.2.0",
     "cors": "^2.8.5",
@@ -34,14 +43,21 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "socket.io": "^4.1.2",
+    "socket.io-client": "^4.7.2",
     "three": "^0.155.0",
+    "three-stdlib": "^2.24.2",
     "tunnel-rat": "^0.1.2",
     "vercel": "^32.0.1",
-    "@react-three/postprocessing": "^2.15.0",
-    "@react-three/xr": "^5.6.2",
-    "socket.io-client": "^4.7.2",
-    "three-stdlib": "^2.24.2",
-    "zustand": "^4.4.1"
+    "zustand": "^4.4.1",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "vite": "^4.4.5",
+    "es-module-shims": "^1.8.0"
   },
   "peerDependencies": {},
   "dependencies": {}
