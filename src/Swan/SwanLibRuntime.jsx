@@ -1,6 +1,6 @@
 import * as React from "react";
-// import * as Main from "../../src-frontend/entry/main.jsx";
-import * as Preload from "../../src-frontend/entry/preload.js";
+// import * as Main from "../../src-swan/entry/main.jsx";
+import * as Preload from "../../src-swan/entry/preload.js";
 
 import tunnel from "tunnel-rat";
 
@@ -82,7 +82,7 @@ export function SwanLibRuntime() {
     Preload.preload({ loadGlobals }).then(() => {
       //!SECTION
       //
-      import("../../src-frontend/entry/main.jsx").then((M) => {
+      import("../../src-swan/entry/main.jsx").then((M) => {
         console.log(M);
 
         set3D(

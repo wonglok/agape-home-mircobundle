@@ -1,7 +1,7 @@
 {
   "name": "swan",
   "type": "module",
-  "source": "src-frontend/entry/*",
+  "source": "src-swan/entry/*",
   "exports": {
     "require": "./dist/main.cjs",
     "default": "./dist/main.modern.js"
@@ -19,7 +19,7 @@
     "build2": "microbundle --jsx window.React.createElement --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "watch2": "microbundle watch --jsx window.React.createElement --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "copy": "nodemon --watch public --exec \"cp -rf ./public/. ./dist/.\"",
-    "code": "nodemon ./src-frontend/live-dev.mjs --watch src-frontend",
+    "code": "nodemon ./src-swan/live-dev.mjs --watch src-swan",
     "build_old": "rm -fr ./dist; npm run buildCode; cp -rf ./public/. ./dist/;",
     "build": "npm run vite-build; npm run buildCode; cp -rf ./public/. ./dist/;",
     "deploy": "npm run build; vercel --prod",

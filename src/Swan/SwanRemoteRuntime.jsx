@@ -18,7 +18,12 @@ export function CommonSwanHTML() {
   return <t.Out></t.Out>;
 }
 
-export function SwanRuntime({ productionURL, mode, appID, developmentURL }) {
+export function SwanRemoteRuntime({
+  productionURL,
+  mode,
+  appID,
+  developmentURL,
+}) {
   let [insertCTX, setInsertCTX] = React.useState(null);
   let [insert3D, setInsert3D] = React.useState(null);
   let [insertHTML, setInsertHTML] = React.useState(null);

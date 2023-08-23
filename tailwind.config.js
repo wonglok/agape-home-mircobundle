@@ -20,7 +20,7 @@ module.exports = {
     //
     "./app/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./src-frontend/**/*.{js,ts,jsx,tsx}",
+    "./src-swan/**/*.{js,ts,jsx,tsx}",
   ], // remove unused styles in production
   darkMode: "class", // or 'media' or 'class'
   theme: {
