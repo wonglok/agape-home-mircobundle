@@ -1,7 +1,7 @@
 {
   "name": "swan",
   "type": "module",
-  "source": "src/entry/*",
+  "source": "src-frontend/entry/*",
   "exports": {
     "require": "./dist/main.cjs",
     "default": "./dist/main.modern.js"
@@ -15,7 +15,7 @@
     "build2": "microbundle --jsx window.React.createElement --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "watch2": "microbundle watch --jsx window.React.createElement --jsxFragment window.React.Fragment --no-sourcemap --external 'none'",
     "copy": "nodemon --watch public --exec \"cp -rf ./public/. ./dist/.\"",
-    "code": "nodemon ./src/live-dev.mjs --watch src",
+    "code": "nodemon ./src-frontend/live-dev.mjs --watch src-frontend",
     "dev": "concurrently \"npm run watch\" \"npm run code\" \"npm run copy\"",
     "build": "rm -fr ./dist; npm run buildCode; cp -rf ./public/. ./dist/;",
     "deploy": "npm run build; vercel --prod"
@@ -39,5 +39,9 @@
     "vercel": "^32.0.1"
   },
   "peerDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "@react-three/postprocessing": "^2.15.0",
+    "@react-three/xr": "^5.6.2",
+    "three-stdlib": "^2.24.2"
+  }
 }
