@@ -27,7 +27,7 @@
   "framework": null,
   "outputDirectory": "dist",
   "functions": {
-    "api-vercel/*.js": {
+    "api/*.js": {
       "maxDuration": 30
     }
   }
