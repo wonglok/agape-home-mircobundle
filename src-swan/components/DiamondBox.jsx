@@ -6,7 +6,7 @@ import { Drei, React, Fiber } from "../dx/LibraryCache";
 let { MeshTransmissionMaterial, Center } = Drei;
 let { useRef } = React;
 
-export function FunFunSphere() {
+export function DiamondBox() {
   let baseURL = useSwan((r) => r.baseURL);
   let glb = useGLTF(`${baseURL}/geometry/box.glb`);
   glb.scene = glb.scene.clone(true);
@@ -57,5 +57,7 @@ export function FunFunSphere() {
     </>
   );
 }
+
+//
 
 //
