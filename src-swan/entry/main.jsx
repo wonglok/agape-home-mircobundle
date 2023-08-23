@@ -43,7 +43,7 @@ export function HTMLOverlay() {
           ></div>
 
           <div
-            className={`shadow-black shadow-2xl backdrop-blur-lg p-1 bg-gray-800 bg-opacity-10 text-white rounded-2xl`}
+            className={`shadow-2xl backdrop-blur-lg p-1 text-white rounded-2xl`}
             style={{
               position: "absolute",
               top: `5%`,
@@ -55,18 +55,19 @@ export function HTMLOverlay() {
             }}
           >
             {/*  */}
-            <textarea
-              className="bg-transparent p-3 w-full block text-white appearance-none bg-opacity-0 focus:outline-none "
+            <input
+              className="bg-transparent p-3 w-full block text-white appearance-none bg-opacity-0 border-none outline-none focus:outline-none "
               defaultValue={text}
               style={{
                 background: "transparent",
                 appearance: "none",
                 resize: "none",
+                outline: "none",
               }}
               onChange={(ev) => {
                 useSwan.setState({ text: ev.target.value });
               }}
-            ></textarea>
+            ></input>
             {/*  */}
           </div>
         </>

@@ -14,7 +14,7 @@ let io = new socket.Server(http, {
   },
 });
 
-const port = process.env.PORT || 8521;
+const port = process.env.PORT || 5174;
 
 app.use(cors({}));
 
