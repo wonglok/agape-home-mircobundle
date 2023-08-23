@@ -12,13 +12,13 @@ import * as React from "react";
 // import { io } from 'socket.io-client'
 import tunnel from "tunnel-rat";
 
-let t = tunnel();
+const t = tunnel();
 
 export function CommonSwanHTML() {
   return <t.Out></t.Out>;
 }
 
-export function RunSwanDev({ productionURL, mode, appID, developmentURL }) {
+export function SwanRuntime({ productionURL, mode, appID, developmentURL }) {
   let [insertCTX, setInsertCTX] = React.useState(null);
   let [insert3D, setInsert3D] = React.useState(null);
   let [insertHTML, setInsertHTML] = React.useState(null);
