@@ -31,6 +31,7 @@ io.on("connection", (socket) => {
   socket.on("request", () => {
     sendFile();
   });
+
   socket.on("disconnect", () => {
     console.log("a user disconnected", socket.id);
     sockets = sockets.filter((s) => s.id !== socket.id);
