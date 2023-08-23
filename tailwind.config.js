@@ -21,7 +21,6 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
     "./src-frontend/**/*.{js,ts,jsx,tsx}",
-    "./dist/**/*.{js,ts,jsx,tsx}",
   ], // remove unused styles in production
   darkMode: "class", // or 'media' or 'class'
   theme: {
@@ -30,30 +29,30 @@ module.exports = {
   variants: {
     extend: {},
   },
-  daisyui: {
-    themes: [
-      {
-        mytheme: {
-          primary: "#1d4ed8",
+  // daisyui: {
+  //   themes: [
+  //     {
+  //       mytheme: {
+  //         primary: "#1d4ed8",
 
-          secondary: "#0ea5e9",
+  //         secondary: "#0ea5e9",
 
-          accent: "#4f46e5",
+  //         accent: "#4f46e5",
 
-          neutral: "#3D4451",
+  //         neutral: "#3D4451",
 
-          "base-100": "#FFFFFF",
+  //         "base-100": "#FFFFFF",
 
-          info: "#3ABFF8",
+  //         info: "#3ABFF8",
 
-          success: "#36D399",
+  //         success: "#36D399",
 
-          warning: "#FBBD23",
+  //         warning: "#FBBD23",
 
-          error: "#F87272",
-        },
-      },
-    ],
-  },
+  //         error: "#F87272",
+  //       },
+  //     },
+  //   ],
+  // },
   plugins: [],
 };
