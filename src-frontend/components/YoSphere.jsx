@@ -20,7 +20,6 @@ export function YoSphere() {
 
       let pageHeight = detail.dimensions.height;
 
-      //
       console.log(current / total);
 
       // console.log(
