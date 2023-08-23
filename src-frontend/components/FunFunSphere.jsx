@@ -1,6 +1,7 @@
 import { useSwan } from "../store/useSwan";
 import { useGLTF, createPortal, useFrame } from "../dx/ShortCut";
 import { Drei, React, Fiber } from "../dx/LibraryCache";
+import { Center } from "@react-three/drei";
 
 let { MeshTransmissionMaterial } = Drei;
 let { useRef } = React;
@@ -35,28 +36,26 @@ export function FunFunSphere() {
           useSwan.setState({ openOverlay: !useSwan.getState().openOverlay });
         }}
       >
-        <mesh ref={ball} geometry={geo}>
-          <MeshTransmissionMaterial
-            transmission={1}
-            thickness={1.0}
-            roughness={0.3}
-            color={"#ffffff"}
-            attenuationDistance={5}
-            attenuationColor={"#00ffff"}
-            metalness={0.0}
-            reflectivity={0.5}
-            chromaticAberration={0.0}
-            transmissionSampler
-            temporalDistortion={0.5}
-          ></MeshTransmissionMaterial>
-        </mesh>
+        <Center>
+          <mesh ref={ball} geometry={geo}>
+            <MeshTransmissionMaterial
+              transmission={1}
+              thickness={1.0}
+              roughness={0.3}
+              color={"#ffffff"}
+              attenuationDistance={5}
+              attenuationColor={"#00ffff"}
+              metalness={0.0}
+              reflectivity={0.5}
+              chromaticAberration={0.0}
+              transmissionSampler
+              temporalDistortion={0.5}
+            ></MeshTransmissionMaterial>
+          </mesh>
+        </Center>
       </group>
     </>
   );
 }
-
-//
-
-//
 
 //
