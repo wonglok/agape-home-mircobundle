@@ -2,9 +2,6 @@ import { useSwan } from "../store/useSwan";
 
 import { YoSphere } from "../components/YoSphere";
 import { DiamondBox } from "../components/DiamondBox";
-import { Runtime } from "../store/Runtime";
-
-export { Runtime };
 
 export function SmartObject() {
   //

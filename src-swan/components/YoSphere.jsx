@@ -39,6 +39,7 @@ export function YoSphere() {
     };
   }, []);
 
+  //
   return (
     <>
       <group ref={tjRef}>
@@ -72,7 +73,3 @@ export function YoSphere() {
     </>
   );
 }
-
-//
-
-//

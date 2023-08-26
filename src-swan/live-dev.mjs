@@ -64,7 +64,7 @@ let sendFile = async () => {
   }, 50);
 };
 
-var watcherSRC = chokidar.watch("./src", {
+var watcherSRC = chokidar.watch("./src-swan", {
   ignored: /^\./,
   persistent: true,
 });

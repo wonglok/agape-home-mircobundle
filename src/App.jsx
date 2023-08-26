@@ -18,6 +18,7 @@ function App() {
         <Suspense fallback={null}>
           <Environment files={`/hdr/grass.hdr`} background></Environment>
         </Suspense>
+
         <Suspense fallback={null}>
           <SwanLibRuntime></SwanLibRuntime>
         </Suspense>
@@ -31,7 +32,3 @@ function App() {
 }
 
 export { App };
-
-//
-
-//
