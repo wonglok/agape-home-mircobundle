@@ -2,6 +2,9 @@ import { useSwan } from "../store/useSwan";
 
 import { YoSphere } from "../components/YoSphere";
 import { DiamondBox } from "../components/DiamondBox";
+import { Runtime } from "../store/Runtime";
+
+export { Runtime };
 
 export function SmartObject() {
   //
@@ -52,8 +55,7 @@ export function HTMLOverlay() {
             }}
           >
             {/*  */}
-            <textarea
-              autoFocus
+            <input
               className="bg-transparent p-3 w-full block text-white appearance-none bg-opacity-0 border-none outline-none focus:outline-none "
               defaultValue={text}
               style={{
@@ -65,7 +67,7 @@ export function HTMLOverlay() {
               onChange={(ev) => {
                 useSwan.setState({ text: ev.target.value });
               }}
-            ></textarea>
+            ></input>
             {/*  */}
           </div>
         </>

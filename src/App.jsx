@@ -3,38 +3,36 @@
 import { Canvas } from "@react-three/fiber";
 // import { SwanRuntime } from "./Swan/SwanRuntime";
 import { Environment, OrbitControls } from "@react-three/drei";
-import { LocalSwanHTML, LocalSwanRuntime } from "./Swan/LocalSwanRuntime";
+import { CommonSwanHTML, SwanLibRuntime } from "./Swan/SwanLibRuntime";
 import { Suspense } from "react";
-import { RemoteSwanRuntime, RemoteSwanHTML } from "./Swan/RemoteSwanRuntime";
 
 function App() {
   return (
     <>
       <Canvas>
-        <group position={[0, 3, 0]}>
-          <Suspense fallback={null}>
-            <LocalSwanRuntime></LocalSwanRuntime>
-          </Suspense>
-        </group>
-
-        <group position={[0, -3, 0]}>
-          <Suspense fallback={null}>
-            <RemoteSwanRuntime
-              baseURL={`http://localhost:5174`}
-            ></RemoteSwanRuntime>
-          </Suspense>
-        </group>
+        {/* <SwanRuntime
+          mode={"development"}
+          developmentURL={developmentURL}
+          productionURL={productionURL}
+        ></SwanRuntime> */}
 
         <Suspense fallback={null}>
           <Environment files={`/hdr/grass.hdr`} background></Environment>
         </Suspense>
-        <OrbitControls object-position={[0, 0, 10]}></OrbitControls>
+        <Suspense fallback={null}>
+          <SwanLibRuntime></SwanLibRuntime>
+        </Suspense>
+
+        <OrbitControls></OrbitControls>
       </Canvas>
 
-      <LocalSwanHTML></LocalSwanHTML>
-      <RemoteSwanHTML></RemoteSwanHTML>
+      <CommonSwanHTML></CommonSwanHTML>
     </>
   );
 }
 
 export { App };
+
+//
+
+//
