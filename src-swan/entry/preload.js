@@ -1,4 +1,4 @@
-import { useSwan } from "src-swan/store/useSwan";
+import { useSwan } from "../store/useSwan";
 
 export async function preload({ loadGlobals, baseURL }) {
   if (baseURL) {
