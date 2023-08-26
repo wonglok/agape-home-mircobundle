@@ -1,4 +1,6 @@
+import * as React from "react";
 export const loadGlobals = async ({ globals: array }) => {
+  window["React"] = React;
   window.Globals = window.Globals || {};
   let res = array
     .filter((r) => {
@@ -8,7 +10,6 @@ export const loadGlobals = async ({ globals: array }) => {
       let name = r.name;
 
       if (!window.Globals[name] && name === "react") {
-        window["React"] = window.Globals["react"];
         window.Globals["react"] = await import("react");
       }
       if (!window.Globals[name] && name === "three") {

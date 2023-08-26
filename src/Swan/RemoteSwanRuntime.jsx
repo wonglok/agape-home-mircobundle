@@ -11,91 +11,20 @@ import { useEffect } from "react";
 import * as React from "react";
 // import { io } from 'socket.io-client'
 import tunnel from "tunnel-rat";
+import { loadGlobals } from "./loadGlobals";
 
-const t = tunnel();
+let t = tunnel();
 
-export function CommonSwanHTML() {
+export function RemoteSwanHTML() {
   return <t.Out></t.Out>;
 }
 
-export function SwanRemoteRuntime({
-  productionURL,
-  mode,
-  appID,
-  developmentURL,
-}) {
+export function RemoteSwanRuntime({ baseURL }) {
   let [insertCTX, setInsertCTX] = React.useState(null);
   let [insert3D, setInsert3D] = React.useState(null);
   let [insertHTML, setInsertHTML] = React.useState(null);
-  let isDev = mode === "development";
-  let baseURL = isDev ? developmentURL : productionURL;
 
   useEffect(() => {
-    window["React"] = React;
-
-    window.Globals = window.Globals || {};
-    // window.Globals['agape-sdk'] = AgapeSDK
-    // window.Globals['react'] = React
-    // window.Globals['three'] = THREE
-    // window.Globals['zustand'] = Zustand
-    // window.Globals['@react-three/fiber'] = ReactThreeFiber
-    // window.Globals['@react-three/drei'] = ReactThreeDrei
-    // window.Globals['@react-three/postprocessing'] = ReactThreePostProc
-    // window.Globals['@react-three/xr'] = ReactThreeXR
-    // window.Globals['three-stdlib'] = THREESTDLIB
-
-    let loadGlobals = async ({ globals: array }) => {
-      let res = array
-        .filter((r) => {
-          return r.needs;
-        })
-        .map(async (r) => {
-          let name = r.name;
-
-          // if (!window.Globals[name] && name === "agape-sdk") {
-          //   window.Globals["agape-sdk"] = await import("agape-sdk");
-          // }
-          if (!window.Globals[name] && name === "react") {
-            window.Globals["react"] = await import("react");
-          }
-          if (!window.Globals[name] && name === "three") {
-            window.Globals["three"] = await import("three");
-          }
-          if (!window.Globals[name] && name === "zustand") {
-            window.Globals["zustand"] = await import("zustand");
-          }
-          if (!window.Globals[name] && name === "@react-three/fiber") {
-            window.Globals["@react-three/fiber"] = await import(
-              "@react-three/fiber"
-            );
-          }
-          if (!window.Globals[name] && name === "@react-three/drei") {
-            window.Globals["@react-three/drei"] = await import(
-              "@react-three/drei"
-            );
-          }
-          if (!window.Globals[name] && name === "@react-three/postprocessing") {
-            window.Globals["@react-three/postprocessing"] = await import(
-              "@react-three/postprocessing"
-            );
-          }
-          if (!window.Globals[name] && name === "@react-three/xr") {
-            window.Globals["@react-three/xr"] = await import("@react-three/xr");
-          }
-          if (!window.Globals[name] && name === "three-stdlib") {
-            window.Globals["three-stdlib"] = await import("three-stdlib");
-          }
-        })
-        .map((r) => {
-          r.catch((err) => {
-            console.log(err);
-          });
-          return r;
-        });
-
-      await Promise.all(res);
-    };
-
     let socket = false;
 
     let run = async ({ loaderUtils, socket }) => {
@@ -111,21 +40,17 @@ export function SwanRemoteRuntime({
               //
               if (
                 r &&
-                typeof r.Runtime === "function" &&
                 typeof r.SmartObject === "function" &&
                 typeof r.HTMLOverlay === "function"
               ) {
                 console.log("Refreshing...");
+
                 setInsertCTX(
                   <React.Suspense fallback={null}>
-                    <r.Runtime
-                      baseURL={baseURL}
-                      appIID={appID}
-                      onReady={() => {
-                        setInsert3D(<r.SmartObject></r.SmartObject>);
-                        setInsertHTML(<r.HTMLOverlay></r.HTMLOverlay>);
-                      }}
-                    ></r.Runtime>
+                    <r.SmartObject></r.SmartObject>
+                    <t.In>
+                      <r.HTMLOverlay></r.HTMLOverlay>
+                    </t.In>
                   </React.Suspense>
                 );
               } else {
@@ -153,7 +78,7 @@ export function SwanRemoteRuntime({
         socket.on("reload", (ev) => {
           clearTimeout(ttt);
           ttt = setTimeout(() => {
-            loadCode();
+            loadCode(0);
           }, 100);
         });
       }
@@ -163,8 +88,19 @@ export function SwanRemoteRuntime({
 
     //
     getLoader().then(async (loaderUtils) => {
-      let io = await import("socket.io-client").then((r) => r.io);
-      socket = isDev ? io(`${developmentURL}`, {}) : false;
+      let isDev = await fetch(`${baseURL}/heartheat`)
+        .then((r) => r.ok && r.json())
+        .then((r) => r.heartbeat === "ok")
+        .catch((r) => {
+          console.log(r);
+          return r;
+        });
+
+      let io = isDev
+        ? await import("socket.io-client").then((r) => r.io)
+        : false;
+
+      socket = isDev ? io && io(`${baseURL}`, {}) : false;
 
       await loaderUtils
         .load(
@@ -173,7 +109,7 @@ export function SwanRemoteRuntime({
           )}}`
         )
         .then((mod) => {
-          return mod.preload({ loadGlobals });
+          return mod.preload({ loadGlobals: loadGlobals });
         })
         .catch((err) => {
           console.log(err);
@@ -191,7 +127,7 @@ export function SwanRemoteRuntime({
         socket.close();
       }
     };
-  }, [developmentURL, baseURL, appID, isDev]);
+  }, [baseURL]);
   return (
     <>
       {insertCTX}

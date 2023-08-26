@@ -7,7 +7,6 @@ let { Clock } = THREE;
 let { MeshTransmissionMaterial, Text3D, Center } = Drei;
 
 export function YoSphere() {
-  let baseURL = useSwan((r) => r.baseURL);
   let text = useSwan((r) => r.text);
   let tjRef = useRef();
 
@@ -22,11 +21,6 @@ export function YoSphere() {
       let pageHeight = detail.dimensions.height;
 
       console.log(current / total);
-
-      // console.log(
-      //   detail.animatedScroll,
-      //   detail.dimensions.scrollHeight - detail.dimensions.height
-      // );
 
       if (tjRef.current) {
         tjRef.current.rotation.y = (current / total) * Math.PI * 2.0;
@@ -51,7 +45,7 @@ export function YoSphere() {
             bevelThickness={0.1}
             scale={1}
             bevelEnabled={true}
-            font={`${baseURL}/fonts/days-font/Days_Regular.json`}
+            font={`/fonts/days-font/Days_Regular.json`}
           >
             {`${text}`}
             <MeshTransmissionMaterial

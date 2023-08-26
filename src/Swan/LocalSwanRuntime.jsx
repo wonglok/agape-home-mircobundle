@@ -4,16 +4,18 @@ import tunnel from "tunnel-rat";
 
 const t = tunnel();
 
-export function CommonSwanHTML() {
+export function LocalSwanHTML() {
   return <t.Out></t.Out>;
 }
 
-export function SwanLibRuntime() {
+//
+export function LocalSwanRuntime() {
   let [o3d, set3D] = useState(false);
   useEffect(() => {
     (async function Yo() {
       set3D(false);
       let Preload = await import("../../src-swan/entry/preload.js");
+
       Preload.preload({ loadGlobals }).then(() => {
         import("../../src-swan/entry/main.jsx").then((SW) => {
           set3D(

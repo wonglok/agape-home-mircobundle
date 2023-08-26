@@ -17,7 +17,9 @@ let io = new socket.Server(http, {
 const port = process.env.PORT || 5174;
 
 app.use(cors({}));
-
+app.get("/heartheat", (req, res) => {
+  res.json({ heartheat: "ok", ts: new Date().getTime() });
+});
 app.use("/", staticFiles("public"));
 app.use("/", staticFiles("dist"));
 
