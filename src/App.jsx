@@ -22,13 +22,13 @@ function App() {
             <RemoteSwanRuntime
               baseURL={`http://localhost:5174`}
             ></RemoteSwanRuntime>
-            {/* <SwanLibRuntime></SwanLibRuntime> */}
           </Suspense>
         </group>
+
         <Suspense fallback={null}>
           <Environment files={`/hdr/grass.hdr`} background></Environment>
         </Suspense>
-        <OrbitControls></OrbitControls>
+        <OrbitControls object-position={[0, 0, 10]}></OrbitControls>
       </Canvas>
 
       <LocalSwanHTML></LocalSwanHTML>
