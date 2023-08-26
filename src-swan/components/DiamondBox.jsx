@@ -7,7 +7,8 @@ let { MeshTransmissionMaterial, Center } = Drei;
 let { useRef } = React;
 
 export function DiamondBox() {
-  let glb = useGLTF(`/geometry/box.glb`);
+  let baseURL = useSwan((r) => r.baseURL);
+  let glb = useGLTF(`${baseURL}/geometry/box.glb`);
   glb.scene = glb.scene.clone(true);
 
   let geo = false;

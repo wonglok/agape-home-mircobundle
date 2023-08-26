@@ -1,4 +1,13 @@
-export async function preload({ loadGlobals }) {
+import { useSwan } from "src-swan/store/useSwan";
+
+export async function preload({ loadGlobals, baseURL }) {
+  if (baseURL) {
+    if (baseURL[baseURL.length - 1] === "/") {
+      baseURL = baseURL.slice(0, baseURL.length - 1);
+    }
+  }
+
+  useSwan.setState({ baseURL });
   await loadGlobals({
     globals: [
       /// essentials

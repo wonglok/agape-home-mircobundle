@@ -16,7 +16,7 @@ export function LocalSwanRuntime() {
       set3D(false);
       let Preload = await import("../../src-swan/entry/preload.js");
 
-      Preload.preload({ loadGlobals }).then(() => {
+      Preload.preload({ loadGlobals, baseURL: location.origin }).then(() => {
         import("../../src-swan/entry/main.jsx").then((SW) => {
           set3D(
             <Suspense fallback={null}>

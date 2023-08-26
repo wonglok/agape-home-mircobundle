@@ -109,7 +109,7 @@ export function RemoteSwanRuntime({ baseURL }) {
           )}}`
         )
         .then((mod) => {
-          return mod.preload({ loadGlobals: loadGlobals });
+          return mod.preload({ loadGlobals: loadGlobals, baseURL });
         })
         .catch((err) => {
           console.log(err);
