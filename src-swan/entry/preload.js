@@ -5,9 +5,10 @@ export async function preload({ loadGlobals, baseURL }) {
     if (baseURL[baseURL.length - 1] === "/") {
       baseURL = baseURL.slice(0, baseURL.length - 1);
     }
+    useSwan.setState({ baseURL });
+  } else {
   }
 
-  useSwan.setState({ baseURL });
   await loadGlobals({
     globals: [
       /// essentials
